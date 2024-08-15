@@ -38,12 +38,22 @@ video {
     align-items: center;
     width: 100%;
     height: 100%;
+    z-index: 2; /* Ensure text is on top */
     opacity: 0; /* Start hidden */
+    transition: opacity 1s ease-in-out; /* Smooth transition for text opacity */
 }
 
 #reclaim-text {
-    color: white;
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: 700;
     text-align: center;
+    color: white;
+}
+
+#rolling-text {
+    display: inline-block;
+    font-weight: bold;
+    color: #E7E0EC;
+    overflow: hidden;
+    vertical-align: bottom; /* Align the rolling text properly with the rest */
 }
