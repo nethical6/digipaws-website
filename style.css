@@ -1,0 +1,49 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    color: #E7E0EC;
+    font-family: "Inter", sans-serif;
+    font-family: Arial, sans-serif;
+}
+
+.video-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+        justify-content: center;  /* Center horizontally */
+    align-items: center;  /* Center vertically */
+    overflow: hidden;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1) 100%); /* Smooth transition effect */
+    transition: background-color 4s ease-in-out; /* Smooth transition effect for background color */
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    align-content: center;
+    
+}
+
+.text-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Start hidden */
+}
+
+#reclaim-text {
+    color: white;
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+}
