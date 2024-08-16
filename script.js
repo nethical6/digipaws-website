@@ -3,38 +3,49 @@ document.addEventListener("DOMContentLoaded", function() {
     const textContainer = document.querySelector(".text-container");
     const infoContainer = document.querySelector(".info-container");
     const rollingText = document.getElementById("rolling-text");
+    const loadingText = document.querySelector(".loading-text");
+    const videoElement = document.querySelector("video");
     const words = ["FOCUS", "DOPAMINE", "MIND"];
     let currentIndex = 0;
 
     // Set the duration for the fade effects
-    const videoFadeDuration = 2000; // 1 second for video fade out
+    const videoFadeDuration = 2000; // 2 seconds for video fade out
     const textFadeDuration = 500;   // 0.5 seconds for text fade in and out
-    const infoFadeDuration = 1000;   // 0.5 seconds for info fade in
+    const infoFadeDuration = 1000;  // 1 second for info fade in
     const rollingTextInterval = 1500; // 1.5 seconds for each word display
 
-    // Start the fade out effect immediately
-    setTimeout(() => {
-        // Fade out the video container
-        anime({
-            targets: '.video-container',
-            opacity: [1, 0],
-            duration: videoFadeDuration,
-            easing: 'easeInOutQuad',
-        });
+    // Wait until the video is fully loaded
+    videoElement.addEventListener("loadeddata", function() {
+        // Hide the loading text
+        loadingText.style.display = "none";
+        
+        // Make the video visible
+        videoContainer.style.display = "block";
 
-        // Fade in the text container shortly after the video starts fading out
-        anime({
-            targets: '.text-container',
-            opacity: [0, 1],
-            duration: textFadeDuration,
-            easing: 'easeInOutQuad',
-            complete: function() {
-                // Start the rolling text effect after the text fades in
-                startRollingText();
-            }
-        });
+        // Start the fade out effect immediately
+        setTimeout(() => {
+            // Fade out the video container
+            anime({
+                targets: '.video-container',
+                opacity: [1, 0],
+                duration: videoFadeDuration,
+                easing: 'easeInOutQuad',
+            });
 
-    }, 100); // Start the fade effect after 0.1 seconds (adjust as needed)
+            // Fade in the text container shortly after the video starts fading out
+            anime({
+                targets: '.text-container',
+                opacity: [0, 1],
+                duration: textFadeDuration,
+                easing: 'easeInOutQuad',
+                complete: function() {
+                    // Start the rolling text effect after the text fades in
+                    startRollingText();
+                }
+            });
+
+        }, 100); // Start the fade effect after 0.1 seconds
+    });
 
     function startRollingText() {
         function updateRollingText() {
@@ -88,7 +99,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 duration: 1000,
                 easing: 'easeInOutQuad',
                 complete: function() {
-                    videoContainer.remove();
+                    // Only remove the video container if it exists
+                    if (videoContainer) {
+                        videoContainer.remove();
+                    }
                     // Fade in the info container after the text container fades out
                     anime({
                         targets: '.info-container',
@@ -96,7 +110,10 @@ document.addEventListener("DOMContentLoaded", function() {
                         duration: infoFadeDuration,
                         easing: 'easeInOutQuad',
                         complete: function() {
-                          textContainer.remove();
+                            // Only remove the text container if it exists
+                            if (textContainer) {
+                                textContainer.remove();
+                            }
                         }
                     });
                 }
@@ -104,4 +121,3 @@ document.addEventListener("DOMContentLoaded", function() {
         }, rollingTextDuration); // Wait until all rolling text items have been displayed
     }
 });
-
