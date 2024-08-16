@@ -101,7 +101,6 @@ video {
     flex-direction: column;
     align-items: center;
     opacity: 0; /* Start hidden */
-    margin-top: -5vh;
     padding: 8px;
 }
 .glow-on-hover {
@@ -173,4 +172,14 @@ video {
     visibility: hidden;
     transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
     z-index: 1000; /* Ensure it appears above other content */
+}
+
+.social-links {
+    margin: 8px 0;
+}
+.social-links a {
+    color: #E7E0EC;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 24px;
 }
