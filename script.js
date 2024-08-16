@@ -116,6 +116,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             if (textContainer) {
                                 textContainer.remove();
                                 attachScrollListener();
+                                attachHoverListenerToSocialLinks()
                             }
                         }
                     });
@@ -159,4 +160,31 @@ function disableScroll() {
 // Function to enable scrolling
 function enableScroll() {
     document.body.classList.remove('no-scroll');
+}
+
+function attachHoverListenerToSocialLinks(){
+
+    const socialLinks = document.querySelectorAll('.social-links a');
+
+    socialLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            anime({
+                targets: link.querySelector('i'),
+                scale: [1, 1.3],  // Scale the icon up a bit
+                color: ['#fff', '#E7E0EC'],  // Change color
+                duration: 300,
+                easing: 'easeInOutQuad'
+            });
+        });
+
+        link.addEventListener('mouseleave', () => {
+            anime({
+                targets: link.querySelector('i'),
+                scale: [1.3, 1],  // Scale the icon back to normal
+                color: ['#E7E0EC', '#fff'],  // Revert color
+                duration: 300,
+                easing: 'easeInOutQuad'
+            });
+        });
+    });
 }
