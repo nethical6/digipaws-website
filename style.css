@@ -184,3 +184,105 @@ video {
     text-decoration: none;
     font-size: 24px;
 }
+/* Navbar Styles */
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links ul li a:hover {
+    color: #E7E0EC;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1001;
+    margin: 16px;
+}
+
+.hamburger-menu span {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+.nav-social-link{
+    display: none;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+    .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(51, 51, 51, 0.9); /* Dark background with transparency */
+        backdrop-filter: blur(10px); /* Blur effect */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    /* Drawer Open */
+    .nav-links.active {
+        display: flex;
+        transform: translateX(0);
+    }
+    
+    .nav-links ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column; /* Makes the list items vertical */
+        gap: 20px;
+        padding: 0;
+        margin: 0;
+        align-items: center;
+    }
+    .nav-social-link{
+        display: flex;
+    }
+}
