@@ -2,7 +2,7 @@ body, html {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    height: 105vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,11 +10,27 @@ body, html {
     color: #E7E0EC;
     font-family: "Inter", sans-serif;
     font-family: Arial, sans-serif;
+    
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.no-scroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+/* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+body::-webkit-scrollbar {
+    display: none;
 }
 
 .video-container {
     display: none; /* Initially hidden */
-    position: absolute;
+    top: 0;
+    position: fixed;
     width: 100%;
     height: 100%;
         justify-content: center;  /* Center horizontally */
@@ -91,7 +107,7 @@ video {
     width: 220px;
     height: 50px;
     margin-top: 12px;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     border: none;
     outline: none;
     color: #fff;
@@ -143,4 +159,17 @@ video {
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
+}
+.scroll-message {
+    position: fixed;
+    bottom: 30px; 
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    z-index: 1000; /* Ensure it appears above other content */
 }

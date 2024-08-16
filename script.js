@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const infoFadeDuration = 1000;  // 1 second for info fade in
     const rollingTextInterval = 1500; // 1.5 seconds for each word display
 
+    disableScroll();
     // Wait until the video is fully loaded
     videoElement.addEventListener("loadeddata", function() {
         // Hide the loading text
@@ -102,6 +103,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     // Only remove the video container if it exists
                     if (videoContainer) {
                         videoContainer.remove();
+                        enableScroll();
                     }
                     // Fade in the info container after the text container fades out
                     anime({
@@ -113,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             // Only remove the text container if it exists
                             if (textContainer) {
                                 textContainer.remove();
+                                attachScrollListener();
                             }
                         }
                     });
@@ -121,3 +124,39 @@ document.addEventListener("DOMContentLoaded", function() {
         }, rollingTextDuration); // Wait until all rolling text items have been displayed
     }
 });
+function attachScrollListener(){
+    const scrollMessage = document.getElementById('scroll-message');
+    let lastScrollTop = null; // To keep track of the last scroll position
+    let timeout;
+    
+    window.addEventListener('scroll', function() {
+        clearTimeout(timeout);
+
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop || lastScrollTop == null) { // Scrolling down
+            scrollMessage.style.opacity = 1;
+            scrollMessage.style.visibility = 'visible';
+
+            timeout = setTimeout(function() {
+                scrollMessage.style.opacity = 0;
+                scrollMessage.style.visibility = 'hidden';
+            }, 2000); // Message will disappear after 2 seconds
+        } else { // Scrolling up
+            scrollMessage.style.opacity = 0;
+            scrollMessage.style.visibility = 'hidden';
+        }
+
+        lastScrollTop = scrollTop; // Update the last scroll position
+    });
+
+}
+
+function disableScroll() {
+    document.body.classList.add('no-scroll');
+}
+
+// Function to enable scrolling
+function enableScroll() {
+    document.body.classList.remove('no-scroll');
+}
