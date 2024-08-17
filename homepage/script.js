@@ -236,7 +236,7 @@ function animate_circles(){
     for (let i = 0; i < numCircles; i++) {
         const circle = document.createElement('div');
         circle.classList.add('circle');
-        circle.style.width = `${anime.random(30, 12fix 0)}px`;
+        circle.style.width = `${anime.random(30, 120)}px`;
         circle.style.height = circle.style.width;
         circle.style.left = `${anime.random(-maxSpawnLeft, maxSpawnLeft)}px`;
         circle.style.top = `${anime.random(0, 600)}px`;
