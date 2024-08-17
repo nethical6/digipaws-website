@@ -27,14 +27,11 @@ a {
     margin: 30px;
 }
 
-
-
 .cover-desc {
     margin-left: 8vw;
     margin-right: 8vw;
     justify-content: center;
     font-size: 1.5rem;
-    line-height: 130%;
 }
 
 /* Navbar Styles */
