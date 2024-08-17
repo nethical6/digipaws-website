@@ -14,6 +14,7 @@ body, html {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
     -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
 }
 
 .no-scroll {
@@ -97,6 +98,7 @@ video {
     width: 100px;
     height: 100px;
     margin: 10px;
+    z-index: 23;
 }
 
 .info-container {
@@ -187,4 +189,14 @@ video {
     margin: 0 10px;
     text-decoration: none;
     font-size: 24px;
+}
+
+#circle-container {
+    opacity: 0;
+}
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(91, 88, 93, 0.4);
+    filter: blur(30px);
 }

@@ -123,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 attachScrollListener();
                                 attachHoverListenerToSocialLinks()
                                 load_hamburger();
+                                animate_circles();
                             }
                         }
                     });
@@ -219,4 +220,40 @@ function load_hamburger(){
     });
 
     
+}
+
+function animate_circles(){
+    const container = document.getElementById('circles-container');
+    const numCircles = 20;
+    const maxWidth = window.innerWidth;
+    const maxHeight = window.innerHeight;
+
+    // Function to create circles
+    for (let i = 0; i < numCircles; i++) {
+        const circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.width = `${anime.random(30, 100)}px`;
+        circle.style.height = circle.style.width;
+        circle.style.left = `${anime.random(0, maxWidth)}px`;
+        circle.style.top = `${anime.random(0, 400)}px`;
+        container.appendChild(circle);
+    }
+
+    // Anime.js Animation for Floating Effect
+    anime({
+        targets: '.circle',
+        translateX: () => anime.random(-maxWidth, maxWidth-150) + 'px',
+        translateY: () => anime.random(-maxHeight , maxHeight-100) + 'px',
+        duration: () => anime.random(3000, 10000),
+        easing: 'easeInOutQuad',
+        direction: 'alternate',
+        loop: true,
+        delay: anime.stagger(200)
+    });
+    anime({
+        targets: container,
+        opacity: [0, 1],
+        duration: 1000,
+        easing: 'easeInOutQuad',
+    });
 }

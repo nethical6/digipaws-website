@@ -39,7 +39,7 @@ a {
 
 /* Navbar Styles */
 header {
-    width: 100%;
+    width: 95vw;
     position: fixed;
     top: 0;
     z-index: 1000;
@@ -90,7 +90,6 @@ header {
     gap: 5px;
     padding: 15px;
     z-index: 1001;
-    margin: 16px;
 }
 
 .hamburger-menu span {
