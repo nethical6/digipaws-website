@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
     disableScroll();
 
     document.getElementById("pre-register").addEventListener("click", function() {
-        window.open("https://docs.google.com/forms/d/e/1FAIpQLSdQsZg-TdwJmGvHMKnWMSMhqcL_zJR5YzxxpGQ6eoa56iTTfw/alreadyresponded", "_blank");
+        window.open("https://play.google.com/store/apps/details?id=nethical.digipaws", "_blank");
     });
 
     // Wait until the video is fully loaded
