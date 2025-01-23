@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Via UPI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .donation-container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .donation-container img {
+            max-width: 200px;
+            margin: 10px auto;
+            display: block;
+        }
+        .upi-id {
+            margin: 10px 0;
+            font-size: 1.2em;
+            word-wrap: break-word;
+        }
+        .button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            font-size: 1em;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #218838;
+        }
+    </style>
+    <script>
+        function copyUPIID() {
+            const upiID = document.getElementById("upiID").textContent;
+            navigator.clipboard.writeText(upiID).then(() => {
+                alert("UPI ID copied to clipboard!");
+            }).catch(() => {
+                alert("Failed to copy UPI ID.");
+            });
+        }
+
+        function openPayLink() {
+            const upiID = document.getElementById("upiID").textContent;
+            window.location.href = `upi://pay?pa=${upiID}&pn=Donation&cu=INR`;
+        }
+    </script>
+</head>
+<body>
+    <div class="donation-container">
+        <h1>Donate Via UPI</h1>
+        <img src="upi.png" alt="Scan QR Code to Pay">
+        <div class="upi-id" id="upiID">bradityaay@fam</div>
+        <button class="button" onclick="copyUPIID()">Copy UPI ID</button>
+        <button class="button" onclick="openPayLink()">Pay Now</button>
+        <br>
+        <h3>Note that this gateway has a limit of Rs 4500, Please contact nethical on discord or telegram to send more than that.</h3>
+        <a href="https://t.me/nethicalps">Contact on Telegram</a>
+
+    <br>
+    <h1> Thank you for donating to the digipaws project!!</h1>
+    </div>
+</body>
+</html>
