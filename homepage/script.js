@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
     disableScroll();
 
     document.getElementById("pre-register").addEventListener("click", function() {
-        window.open("https://play.google.com/store/apps/details?id=nethical.digipaws", "_blank");
+        window.open("https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://f-droid.org/en/packages/nethical.digipaws", "_blank");
     });
 
     
